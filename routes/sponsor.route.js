@@ -41,6 +41,28 @@ router.route('/:id')
             res.status(200).json(sponsor);
         }
     })
+    .patch(async (req, res) => {
+        const sponsor = await sponsorController.getById(req.params.id);
+
+        if (!sponsor) {
+            res.status(404).json();
+        } else {
+            const updated_sponsor = await sponsorController.update(req.params.id, req.body);
+            if (!updated_sponsor) {
+                res.status(404).json({message: "Un problème est survenu lors de la modification du sponsor."});
+            } else {
+                res.status(202).json({message: "Le sponsor a bien été modifié comme ceci :" + updated_sponsor});
+            }
+        }
+    })
+    .delete(async (req, res) => {
+        const sponsor = await sponsorController.remove(req.params.id);
+        if (!sponsor) {
+            res.status(404).json({message: "Un problème est survenu lors de la suppression."});
+        } else {
+            res.status(202).json({message: "Entreprise partenaire supprimée !"});
+        }
+    })
 ;
 
 module.exports = router;
