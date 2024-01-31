@@ -1,13 +1,13 @@
 const express = require('express');
 
-const imagesController = require('../controllers/images.controller');
+const imageController = require('../controllers/image.controller');
 
 const router = express.Router();
 
 
 router.route('/')
     .get(async (req, res) => {
-        const images = await imagesController.getAll();
+        const images = await imageController.getAll();
 
         if (!images) {
             res.status(404).json({message: "Il n'y a aucune image disponible pour le moment."});
