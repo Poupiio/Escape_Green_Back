@@ -20,8 +20,7 @@ router.use('/services', servicesRoute);
 // "http://localhost/api/sponsors"
 router.use('/sponsors', sponsorsRoute);
 
-// "http://localhost/api/images"
-router.use('/images', imagesRoute);
+
 
 
 // J'exporte le router pour le rendre accessible en faisant un require de tout ce fichier

@@ -18,4 +18,17 @@ router.route('/')
     })
 ;
 
+router.route('/:id')
+    .get(async (req, res) => {
+        const services = null // await servicesController.getById();
+
+        if (!services) {
+            res.status(404).json({message: "Aucun service n'a été trouvé"});
+        } else {
+            res.status(200).json(services);
+        }
+
+    })
+;
+
 module.exports = router;

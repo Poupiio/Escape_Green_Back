@@ -1,11 +1,14 @@
 const db = require('../utils/db');
 
-
 const getAll = async () => {
-    const [services, err] = await db.query("SELECT * FROM services");
-    return services;
+    try {
+        const [services, err] = await db.query("SELECT * FROM services");
+        console.log(services)
+        return services;
+    } catch (err) {
+        console.log(err);
+    }
 };
-
 
 module.exports = {
     getAll,
