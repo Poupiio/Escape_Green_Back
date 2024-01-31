@@ -2,8 +2,13 @@ const db = require('../utils/db');
 
 
 const getAll = async () => {
-    const [users, err] = await db.query("SELECT * FROM user");
-    return users;
+    try {
+        const [users, err] = await db.query("SELECT * FROM users");
+        
+        return users;
+    } catch (err) {
+        console.log(err);
+    }
 };
 
 
