@@ -2,7 +2,7 @@ const db = require('../utils/db');
 
 
 const getAll = async () => {
-    const [services, err] = await db.query("SELECT * FROM services");
+    const [services, err] = await db.query("SELECT services.*, sponsors.name AS sponsor_name FROM services JOIN sponsors ON services.sponsor_id = sponsors.id");
     return services;
 };
 
@@ -44,9 +44,16 @@ const update = async (id, data) => {
     }
 };
 
+// const getServiceName = async () => {
+//     const [name, err] = await db.query("SELECT sponsors.name FROM services JOIN sponsors ON services.sponsor_id = sponsors.id");
+//     console.log(name);
+//     return name;
+// }
+
 module.exports = {
     getAll,
     getById,
     add,
-    update
+    update,
+    // getServiceName,
 };
