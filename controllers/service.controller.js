@@ -2,7 +2,7 @@ const db = require('../utils/db');
 
 
 const getAll = async () => {
-    const [services, err] = await db.query("SELECT services.*, sponsors.name AS sponsor_name FROM services JOIN sponsors ON services.sponsor_id = sponsors.id");
+    const [services, err] = await db.query("SELECT sponsors.name AS sponsor_name, type.name AS type_name FROM services JOIN sponsors ON services.sponsor_id = sponsors.id JOIN type ON services.type_id = type.id");
     return services;
 };
 
