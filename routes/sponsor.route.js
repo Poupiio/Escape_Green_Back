@@ -18,15 +18,13 @@ router.route('/')
             res.status(200).json(sponsors);
         }
     })
-    .put(authValidator.isAuth(), validator(sponsorSchema), async (req, res) => {
-
-        // Je récupère l'id de l'utilisateur connecté ici
-        const new_sponsor = await sponsorController.add(req.body, req.auth.id);
+    .put(async (req, res) => {
+        const new_sponsor = await sponsorController.add(req.body);
 
         if (!new_sponsor) {
-            res.status(404).json();
+            res.status(404).json({message: "Raté."});
         } else {
-            res.status(201).json(new_sponsor);
+            res.status(201).json({message: "Nouveau partenaire ajouté avec succès !"});
         }
     })
 ;
