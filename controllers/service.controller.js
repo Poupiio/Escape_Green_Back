@@ -1,6 +1,7 @@
 const db = require('../utils/db');
 
 const getAll = async () => {
+<<<<<<< HEAD
     try {
         const [services, err] = await db.query("SELECT * FROM services");
         console.log(services)
@@ -8,6 +9,10 @@ const getAll = async () => {
     } catch (err) {
         console.log(err);
     }
+=======
+    const [services, err] = await db.query("SELECT sponsors.name AS sponsor_name, type.name AS type_name FROM services JOIN sponsors ON services.sponsor_id = sponsors.id JOIN type ON services.type_id = type.id");
+    return services;
+>>>>>>> 542cc65a03d95db6c70de6f16bde763661fdaca6
 };
 
 <<<<<<< HEAD
@@ -50,10 +55,20 @@ const update = async (id, data) => {
     }
 };
 
+<<<<<<< HEAD
 >>>>>>> 0a7550766e700c6fdf2b6600f6cc3005a0031fd8
+=======
+// const getServiceName = async () => {
+//     const [name, err] = await db.query("SELECT sponsors.name FROM services JOIN sponsors ON services.sponsor_id = sponsors.id");
+//     console.log(name);
+//     return name;
+// }
+
+>>>>>>> 542cc65a03d95db6c70de6f16bde763661fdaca6
 module.exports = {
     getAll,
     getById,
     add,
-    update
+    update,
+    // getServiceName,
 };
