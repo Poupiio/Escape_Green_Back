@@ -1,22 +1,11 @@
 const db = require('../utils/db');
 
 const getAll = async () => {
-<<<<<<< HEAD
-    try {
-        const [services, err] = await db.query("SELECT * FROM services");
-        console.log(services)
-        return services;
-    } catch (err) {
-        console.log(err);
-    }
-=======
     const [services, err] = await db.query("SELECT sponsors.name AS sponsor_name, type.name AS type_name FROM services JOIN sponsors ON services.sponsor_id = sponsors.id JOIN type ON services.type_id = type.id");
     return services;
->>>>>>> 542cc65a03d95db6c70de6f16bde763661fdaca6
 };
 
-<<<<<<< HEAD
-=======
+
 const add = async (data) => {
     const [req, err] = await db.query("INSERT INTO services (name, description, type_service, prix_ht, prix_ttc, tva, sponsor_id) VALUES (?,?,?,?,?,?,?)", [data.name, data.description, data.type_service, data.prix_ht, data.prix_ttc, data.tva, data.sponsor_id]);
 
@@ -55,16 +44,7 @@ const update = async (id, data) => {
     }
 };
 
-<<<<<<< HEAD
->>>>>>> 0a7550766e700c6fdf2b6600f6cc3005a0031fd8
-=======
-// const getServiceName = async () => {
-//     const [name, err] = await db.query("SELECT sponsors.name FROM services JOIN sponsors ON services.sponsor_id = sponsors.id");
-//     console.log(name);
-//     return name;
-// }
 
->>>>>>> 542cc65a03d95db6c70de6f16bde763661fdaca6
 module.exports = {
     getAll,
     getById,

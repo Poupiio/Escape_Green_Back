@@ -1,0 +1,10 @@
+{
+    "port": 8010,
+    "basePath": "/api",
+    "mysqlHost": "localhost",
+    "mysqlUsername": "root",
+    "mysqlPassword": "cV$e&alj85k9kdSQ@N",
+    "mysqlDatabase": "escape_green",
+    "jwtPass": "ceciestunmotdepasseultralongetcompliqué",
+    "jwtExpireLength": "1 hour"
+}
